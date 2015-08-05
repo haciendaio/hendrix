@@ -1,3 +1,6 @@
+var $ = require("jquery");
+var _ = require("underscore");
+
 var hendrix = hendrix || {};
 
 hendrix.editor = function($panel) {
@@ -8,7 +11,7 @@ hendrix.editor = function($panel) {
     console.log(history);
   }
 
-  var history = [""];
+  var history = [];
   save();
 
   return {
