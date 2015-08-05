@@ -5,8 +5,9 @@ var hendrix = hendrix || {};
 
 hendrix.editor = function($panel) {
   function save() {
-    if (history[history.length - 1] !== $panel.text()) {
-      history.push($panel.text());
+    var textToBeSaved = $panel.text();
+    if (_.last(history) !== textToBeSaved) {
+      history.push(textToBeSaved);
     }
     console.log(history);
   }
