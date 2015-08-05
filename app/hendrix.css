@@ -2,7 +2,12 @@
     width:60%;
     height:90%;
     padding: 20px;
-    margin: auto;
+    margin-left: 20%;
     box-shadow: -1px -1px 1px #9495a8;
     border: 1px solid #9495a8;
+    display: inline-block;
+}
+
+.undo-button {
+  display: inline-block;
 }
