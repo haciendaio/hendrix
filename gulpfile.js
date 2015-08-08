@@ -4,9 +4,9 @@ var watch = require('gulp-watch');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 
-gulp.task('default', function () {
+gulp.task('default', ['browserify'], function () {
     console.log('default task');
-    gulp.watch('./app/hendrix.js', ['browserify']);
+    gulp.watch('./app/**/*.js', ['browserify']);
 });
 
 gulp.task('browserify', function() {

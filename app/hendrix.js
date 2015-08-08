@@ -1,6 +1,9 @@
 var $ = require("jquery");
 var _ = require("underscore");
 
+var savingStrategy = require("./js/savingStrategy.js");
+
+
 var hendrix = hendrix || {};
 
 hendrix.editor = function($panel) {
@@ -30,26 +33,6 @@ hendrix.editor = function($panel) {
 
 }
 
-hendrix.simpleSavingStrategy = function(editor) {
-  return {
-    start: function() {
-      setInterval(function(){
-        editor.save();
-      }, 5000);
-    }
-  }
-}
-
-hendrix.onChangeSavingStrategy = function(editor, $panel) {
-  return {
-    start: function() {
-      $panel.on('input', function(){
-        editor.save();
-      });
-    }
-  }
-}
-
 hendrix.controller = function() {
   var $panel = $(".panel");
   var $undoButton = $("#undo");
@@ -60,7 +43,7 @@ hendrix.controller = function() {
     editor.undo();
   });
 
-  hendrix.onChangeSavingStrategy(editor, $panel).start();
+  savingStrategy.onTextChange(editor, $panel).start();
 }
 
 hendrix.controller();
