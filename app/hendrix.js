@@ -30,6 +30,16 @@ hendrix.editor = function($panel) {
 
 }
 
+hendrix.simpleSavingStrategy = function(editor) {
+  return {
+    start: function() {
+      setInterval(function(){
+        editor.save();
+      }, 5000);
+    }
+  }
+}
+
 hendrix.controller = function() {
   var editor = hendrix.editor($(".panel"));
   var $undoButton = $("#undo");
@@ -38,9 +48,7 @@ hendrix.controller = function() {
     editor.undo();
   });
 
-  setInterval(function(){
-    editor.save();
-  }, 5000);
+  hendrix.simpleSavingStrategy(editor).start();
 }
 
 hendrix.controller();
