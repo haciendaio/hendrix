@@ -20,6 +20,7 @@
     "gulp": "^3.9.0",
     "karma": "^0.13.6",
     "browserify": "~3.36.0",
+    "gulp-watch": "*",
     "vinyl-source-stream": "*",
     "underscore": "*",
     "jquery": "*"
