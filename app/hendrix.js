@@ -40,15 +40,27 @@ hendrix.simpleSavingStrategy = function(editor) {
   }
 }
 
+hendrix.onChangeSavingStrategy = function(editor, $panel) {
+  return {
+    start: function() {
+      $panel.on('input', function(){
+        editor.save();
+      });
+    }
+  }
+}
+
 hendrix.controller = function() {
-  var editor = hendrix.editor($(".panel"));
+  var $panel = $(".panel");
   var $undoButton = $("#undo");
+
+  var editor = hendrix.editor($panel);
 
   $undoButton.click(function(){
     editor.undo();
   });
 
-  hendrix.simpleSavingStrategy(editor).start();
+  hendrix.onChangeSavingStrategy(editor, $panel).start();
 }
 
 hendrix.controller();
